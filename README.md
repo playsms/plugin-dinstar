@@ -1,6 +1,6 @@
 # plugin-dinstar
 
-playSMS gateway plugin for Dinstar VoIP gateway.
+playSMS gateway plugin for Dinstar GSM gateway.
 
 Info       | Value
 -----------| ---------------------------------
