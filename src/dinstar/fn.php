@@ -50,8 +50,9 @@ function dinstar_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms_msg
 		$api_username = $plugin_config['dinstar']['username'];
 		$api_password = $plugin_config['dinstar']['password'];
 
-		$port = isset($plugin_config['dinstar']['port']) ? $plugin_config['dinstar']['port'] : '-';
-		if (trim($port) == '-') {
+		$port = $plugin_config['dinstar']['port'];
+		if (trim($port) == '-' || trim($port) === '') {
+			$port = '-';
 			$fill_port = '';
 		} else {
 			$port = (int) $port;
