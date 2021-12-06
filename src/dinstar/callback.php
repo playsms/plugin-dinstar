@@ -36,16 +36,29 @@ if (!$called_from_hook_call) {
 	$requests = json_decode($json, true);
 }
 
-// incoming message
 $sms_datetime = core_display_datetime(core_get_datetime());
-$sms_sender = isset($requests['sms'][0]['number']) ? $requests['sms'][0]['number'] : '';
-$message = htmlspecialchars_decode(urldecode(isset($requests['sms'][0]['text']) ? $requests['sms'][0]['text'] : ''));
-$sms_receiver = core_sanitize_sender(isset($requests['sms'][0]['port']) ? $requests['sms'][0]['port'] : '');
-$smsc = '';
 
-if ($message) {
-	_log("incoming smsc:" . $smsc . " from:" . $sms_sender . " port:" . $sms_receiver . " m:[" . $message . "] smsc:[" . $smsc . "]", 2, "dinstar callback");
-	$sms_sender = addslashes($sms_sender);
-	$message = addslashes($message);
-	recvsms($sms_datetime, $sms_sender, $message, $sms_receiver, $smsc);
+if (isset($requests['sms'])) {
+	foreach ($requests['sms'] as $in) {
+		// incoming message
+		$sms_sender = isset($in['number']) ? $in['number'] : '';
+		$sms_receiver = isset($in['smsc']) ? $in['smsc'] : '';
+		$message = htmlspecialchars_decode(urldecode(isset($in['text']) ? $in['text'] : ''));
+		$port = isset($in['port']) ? (int) $in['port'] : 0;
+		$sn = isset($in['sn']) ? $in['sn'] : '';
+
+		// from sn and port we should be able to get smsc
+		$smsc = '';
+
+		if ($message) {
+			_log("incoming sn:" . $sn . " from:" . $sms_sender . " to:" . $sms_receiver . " port:" . $port . " m:[" . $message . "] smsc:[" . $smsc . "]", 2, "dinstar callback");
+
+			$sms_sender = addslashes($sms_sender);
+			$sms_receiver = addslashes($sms_receiver);
+			$message = addslashes($message);
+			$smsc = addslashes($smsc);
+
+			recvsms($sms_datetime, $sms_sender, $message, $sms_receiver, $smsc);
+		}
+	}
 }

@@ -1,7 +1,7 @@
 <?php
 defined('_SECURE_') or die('Forbidden');
 
-// get kannel config from registry
+// get dinstar config from registry
 $data = registry_search(1, 'gateway', 'dinstar');
 $plugin_config['dinstar'] = $data['gateway']['dinstar'];
 $plugin_config['dinstar']['name'] = 'dinstar';
