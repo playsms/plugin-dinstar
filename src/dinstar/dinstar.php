@@ -41,6 +41,7 @@ switch (_OP_) {
 				'Username' => _('Username'),
 				'Password' => _('Password'),
 				'Port' => _('Port'),
+				'Device SN' => _('Device SN'),
 				'Module sender ID' => _('Module sender ID'),
 				'Module timezone' => _('Module timezone'),
 				'Save' => _('Save'),
@@ -53,6 +54,7 @@ switch (_OP_) {
 				'dinstar_param_gateway_port' => $plugin_config['dinstar']['gateway_port'],
 				'dinstar_param_username' => $plugin_config['dinstar']['username'],
 				'dinstar_param_port' => $plugin_config['dinstar']['port'],
+				'dinstar_param_sn' => $plugin_config['dinstar']['sn'],
 				'callback_url' => $callback_url,
 			)
 		);
@@ -65,7 +67,8 @@ switch (_OP_) {
 			'gateway_port' => $_REQUEST['up_gateway_port'],
 			'username' => $_REQUEST['up_username'],
 			'password' => $_REQUEST['up_password'],
-			'port' => $_PORT['up_port'],
+			'port' => $_REQUEST['up_port'],
+			'sn' => $_REQUEST['up_sn'],
 		);
 		if ($_REQUEST['up_password']) {
 			$items['password'] = $_REQUEST['up_password'];
