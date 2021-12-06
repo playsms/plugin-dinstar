@@ -51,7 +51,7 @@ function dinstar_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms_msg
 		$api_password = $plugin_config['dinstar']['password'];
 
 		$port = isset($plugin_config['dinstar']['port']) ? (int) $plugin_config['dinstar']['port'] : '';
-		if ($port !== '' && $port != '-') {
+		if ($port === 0 || (int) $port > 0) {
 			$fill_port = '"port":"' . $port . '",';
 		} else {
 			$fill_port = '';
@@ -61,7 +61,7 @@ function dinstar_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms_msg
 		$unicode = ($unicode ? 'unicode' : 'gsm-7bit');
 		$json = '{"text":"' . $sms_msg . '","param":[{"number":"' . $sms_to . '","user_id":"' . $smslog_id . '",' . $fill_port . '"encoding":"' . $unicode . '"}]}';
 
-		_log('request api_url:' . $api_url . ' sn:' . $sn . ' json:' . $json, 3, 'dinstar_hook_sendsms');
+		_log('request api_url:' . $api_url . ' sn:' . $sn . ' port:' . $port . ' json:' . $json, 3, 'dinstar_hook_sendsms');
 
 		$curl = curl_init();
 
