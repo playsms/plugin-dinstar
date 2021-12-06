@@ -9,8 +9,8 @@
 		<tr><td>{{ Gateway port }}</td><td><input type=text maxlength=250 name=up_gateway_port value="{{ dinstar_param_gateway_port }}"></td></tr>
 		<tr><td>{{ Username }}</td><td><input type=text maxlength=30 name=up_username value="{{ dinstar_param_username }}"></td></tr>
 		<tr><td>{{ Password }}</td><td><input type=password maxlength=30 name=up_password value=""> {{ HINT_FILL_SECRET }}</td></tr>
-		<tr><td>{{ Port }}</td><td><input type=text maxlength=5 name=up_port value="{{ dinstar_param_port }}"></td></tr>
-		<tr><td>{{ Device SN }}</td><td><input type=text maxlength=30 name=up_sn value="{{ dinstar_param_sn }}"></td></tr>
+		<tr><td>{{ Port }}</td><td><input type=text maxlength=5 name=up_port value="{{ dinstar_param_port }}"> {{ HINT_FILL_PORT }}</td></tr>
+		<tr><td>{{ Device SN }}</td><td><input type=text maxlength=30 name=up_sn value="{{ dinstar_param_sn }}"> {{ HINT_FILL_SN }}</td></tr>
 	</tbody>
 </table>
 <p><input type=submit class=button value="{{ Save }}">

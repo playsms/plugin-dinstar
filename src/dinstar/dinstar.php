@@ -47,6 +47,8 @@ switch (_OP_) {
 				'Save' => _('Save'),
 				'Notes' => _('Notes'),
 				'HINT_FILL_SECRET' => _hint(_('Fill to change the password')),
+				'HINT_FILL_PORT' => _hint(_('Fill with specific port number or - to omit')),
+				'HINT_FILL_SN' => _hint(_('Fill with device Serial Number')),
 				'CALLBACK_URL_IS' => _('Your callback URL is'),
 				'CALLBACK_URL_ACCESSIBLE' => _('Your callback URL should be accessible from Dinstar'),
 				'BUTTON_BACK' => _back('index.php?app=main&inc=core_gateway&op=gateway_list'),
