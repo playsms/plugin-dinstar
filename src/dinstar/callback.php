@@ -48,7 +48,7 @@ if (isset($requests['sms'])) {
 		$sms_center = isset($in['smsc']) ? $in['smsc'] : '';
 
 		$message = htmlspecialchars_decode(urldecode(isset($in['text']) ? $in['text'] : ''));
-		$port = isset($in['port']) ? (int) $in['port'] : 0;
+		$port = isset($in['port']) ? (int) $in['port'] : '';
 		$sn = isset($in['sn']) ? $in['sn'] : '';
 
 		// from sn and port we should be able to get smsc

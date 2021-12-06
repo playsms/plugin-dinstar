@@ -6,7 +6,7 @@ $data = registry_search(1, 'gateway', 'dinstar');
 $plugin_config['dinstar'] = $data['gateway']['dinstar'];
 $plugin_config['dinstar']['name'] = 'dinstar';
 $plugin_config['dinstar']['gateway_port'] = isset($plugin_config['dinstar']['gateway_port']) ? (int) $plugin_config['dinstar']['gateway_port'] : 80;
-$plugin_config['dinstar']['port'] = isset($plugin_config['dinstar']['port']) ? (int) $plugin_config['dinstar']['port'] : 0;
+$plugin_config['dinstar']['port'] = isset($plugin_config['dinstar']['port']) ? (int) $plugin_config['dinstar']['port'] : '';
 $plugin_config['dinstar']['sn'] = isset($plugin_config['dinstar']['sn']) ? $plugin_config['dinstar']['sn'] : '';
 
 // smsc configuration
