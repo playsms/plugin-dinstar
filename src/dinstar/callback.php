@@ -42,7 +42,11 @@ if (isset($requests['sms'])) {
 	foreach ($requests['sms'] as $in) {
 		// incoming message
 		$sms_sender = isset($in['number']) ? $in['number'] : '';
-		$sms_receiver = isset($in['smsc']) ? $in['smsc'] : '';
+		$sms_receiver = '';
+
+		// this is the smsc value pushed by dinstar, not the same as the smsc value in playSMS
+		$sms_center = isset($in['smsc']) ? $in['smsc'] : '';
+
 		$message = htmlspecialchars_decode(urldecode(isset($in['text']) ? $in['text'] : ''));
 		$port = isset($in['port']) ? (int) $in['port'] : 0;
 		$sn = isset($in['sn']) ? $in['sn'] : '';
@@ -51,7 +55,7 @@ if (isset($requests['sms'])) {
 		$smsc = '';
 
 		if ($message) {
-			_log("incoming sn:" . $sn . " from:" . $sms_sender . " to:" . $sms_receiver . " port:" . $port . " m:[" . $message . "] smsc:[" . $smsc . "]", 2, "dinstar callback");
+			_log("incoming sn:" . $sn . " port:" . $port . " from:" . $sms_sender . " m:[" . $message . "] smsc:[" . $smsc . "] sms_center:" . $sms_center, 2, "dinstar callback");
 
 			$sms_sender = addslashes($sms_sender);
 			$sms_receiver = addslashes($sms_receiver);
